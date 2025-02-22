@@ -1,7 +1,20 @@
-.button {
+.buttonDark {
   padding: 12px 20px;
   cursor: pointer;
-  background-color: #d1d1d1;
+  background-color: rgb(71, 71, 71);
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #696868;
+  }
+}
+
+.buttonLight {
+  padding: 12px 20px;
+  cursor: pointer;
+  background-color: #fff;
   border: 0;
   border-radius: 5px;
 

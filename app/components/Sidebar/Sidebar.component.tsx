@@ -48,7 +48,7 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
           <tr>
             <th>Title</th>
             <th>Count</th>
-            <th colSpan={2}>Total Amount</th>
+            <th colSpan={2}>Item Price</th>
           </tr>
         </thead>
         <tbody>
@@ -86,7 +86,9 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
     <div className={styles.emptyCartContainer}>
       <IoBagOutline className={styles.emptyCartImage} />
       <h3 className={styles.emptyCartTitle}>Your Cart is Empty</h3>
-      <button className={styles.emptyButton} onClick={onClose}>Continue Shopping</button>
+      <Button onClick={onClose}>
+        <span>Continue Shopping</span>
+      </Button>
     </div>
   )
 

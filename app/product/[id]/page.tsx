@@ -17,6 +17,8 @@ import AddAmountButton from "@/app/components/AddAmountButton/AddAmountButton.co
 import Button from "@/app/components/Button/Button.component";
 import Navigation from "@/app/components/Navigation/Navigation.component";
 import Sidebar from "@/app/components/Sidebar/Sidebar.component";
+import Loading from "@/app/components/Loading/Loading.component";
+import ErrorComponent from "@/app/components/Error/Error.component";
 import styles from "./page.module.scss"
 
 const ProductPage: React.FC = () => {
@@ -69,8 +71,8 @@ const ProductPage: React.FC = () => {
     }
   }
 
-  if (error) return <h1>Oops! something went wrong!</h1>
-  if (isLoading) return <h1>Loading...</h1>
+  if (error) return <ErrorComponent />
+  if (isLoading) return <Loading isLoading />
 
   return (
     <>

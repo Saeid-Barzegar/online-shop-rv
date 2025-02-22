@@ -12,6 +12,8 @@ import ProductComponent from "./components/ProductCard/Product.component";
 import Navigation from "./components/Navigation/Navigation.component";
 import Sidebar from "./components/Sidebar/Sidebar.component";
 import Pagination from "./components/Pagination/Pagination.component";
+import Loading from "./components/Loading/Loading.component";
+import ErrorComponent from "./components/Error/Error.component";
 import styles from "./page.module.scss"
 
 
@@ -55,9 +57,8 @@ export default function Home() {
     }
   }, [data, paginationData.currentPage])
 
-
-  if (error) return <h1>Oops! something went wrong!</h1>
-  if (isLoading) return <h1>Loading...</h1>
+  if (error) return <ErrorComponent />
+  if (isLoading) return <Loading isLoading />
 
   return (
     <>

@@ -10,3 +10,14 @@ export interface SidebarPropTypes {
   title: string;
   onClose: () => void;
 }
+
+export interface LinkButtonPropTypes {
+  path: string;
+  children: string;
+}
+
+export interface LoadingPropTypes {
+  isLoading: boolean;
+};
+
+export interface ErrorComponentPropTypes { }
