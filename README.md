@@ -16,21 +16,24 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Resources And Libraries
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [`React Query`]: used to fetch resources and handling errors and pending api calls.
+- [`Redux`]: user to share required data between pages and components.
+- [`Lodash`]: to use helper functions.
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- The homepage fetches product data from the "/product" API using React Query. The fetched data is stored in local state, with pagination dynamically displaying 10 products per page.
+-  Clicking on a product navigates the user to the product details page. The product ID is passed via route parameters to fetch detailed information from the "/product/:id" API.
+- Users can adjust product quantities and add items to their shopping cart, which is accessible from the navbar on both the shop and details pages.
+- The shopping cart state is managed using Redux, ensuring availability across all pages.
+- Clicking the shopping bag icon in the navigation bar opens a sidebar displaying all added products, including individual and total prices.
+- Users can remove items from the cart, and if they add a product that is already in the cart, its quantity updates instead of duplicating entries.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build
+- 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+App already deployed and available at: [`Vercel`](https://online-shop-rv.vercel.app/)
