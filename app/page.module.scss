@@ -1,0 +1,28 @@
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  background-color: var(--color-background);
+  height: 100svh;
+  padding: 0;
+  margin: 0;
+}
+
+
+@media (max-width: 480) {
+  
+}
+
+@media (max-width: 640px) {
+  
+}
+
+@media (max-width: 768px) {
+  
+}
+
+@media (max-width: 1024px) {
+  
+}
