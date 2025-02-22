@@ -1,0 +1,45 @@
+.navContainer {
+  display: flex;
+  height: 70px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(232, 232, 232);
+
+  .menuContainer {
+    display: flex;
+    flex: 1;
+
+    .menuItem {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 70px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #d1d1d1;
+      }
+    }
+  }
+  .cartContainer {
+    width: 80px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .cartBotton {
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+
+      .cartIcon {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+}

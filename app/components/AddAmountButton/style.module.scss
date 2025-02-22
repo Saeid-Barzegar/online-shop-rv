@@ -1,0 +1,35 @@
+.addButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+
+  .decrementButton{ 
+    width: 20px;
+    height: 25px; 
+    border: 1px solid #979797;
+    border-radius: 3px 0 0 3px;
+    font-size: 12pt;
+  }
+
+  .amountOfProduct {
+    width: 30px;
+    height: 25px;
+    text-align: center;
+    border-radius: 0;
+    border: 1px solid #979797;
+    border-left: none;
+    border-right: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .incrementButton{
+    width: 20px;
+    height: 25px; 
+    border: 1px solid #979797;
+    border-radius: 0 3px 3px 0;
+    font-size: 12pt;
+  }
+}
