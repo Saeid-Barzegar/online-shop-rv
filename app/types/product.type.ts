@@ -24,3 +24,5 @@ export interface CommonSliceInterface {
   isOpenSidebar: boolean;
   isModalOpen: boolean;
 };
+
+export interface NavigationPropTypes {}

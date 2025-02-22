@@ -12,6 +12,8 @@ import Modal from '../Modal/Modal.component';
 import { IoClose } from "react-icons/io5";
 import styles from "./styles.module.scss";
 import { SidebarPropTypes } from '@/app/types/components.type';
+import { IoBagOutline } from "react-icons/io5";
+import Button from '../Button/Button.component';
 
 const Sidebar: React.FC<SidebarPropTypes> = ({
   isOpen = true,
@@ -19,10 +21,11 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
   onClose
 }) => {
 
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state: RootState) => state.shop);
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [setSelectedToRemove, setSetSelectedToRemove] = useState<number>(-1)
-  const { cart } = useSelector((state: RootState) => state.shop);
-  const dispatch = useDispatch();
 
   const totalPrice = cart.reduce((total, cartItem) => {
     const { product, count } = cartItem;
@@ -36,7 +39,57 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
 
   const removeRowHandler = () => {
     dispatch(removeFromCart(setSelectedToRemove));
+    setIsModalOpen(false);
   }
+
+  const renderCartTable = () => {
+    return (
+      <table className={styles.cartTable} cellSpacing={0}>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Count</th>
+            <th colSpan={2}>Total Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {cart.map((cartItem: CartItemType) => {
+            const { count, product } = cartItem;
+            const itemPrice = (product.price * count).toFixed(2)
+            return (
+              <tr key={product.id}>
+                <td style={{ display: 'flex', flexDirection: 'column' }}>
+                  <Image className={styles.productImage} src={product.image} alt={"product_image"} width={50} height={50} />
+                  <span>{product.title}</span>
+                </td>
+                <td>{count}</td>
+                <td>{itemPrice}</td>
+                <td>
+                  <button className={styles.removeButton} onClick={() => removeButtonClickHandler(product.id)}>
+                    <IoClose className={styles.removeIcon} />
+                  </button>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+        <tfoot>
+          <tr className={styles.tableRow}>
+            <td colSpan={2}>Total Amount</td>
+            <td colSpan={2} style={{ textAlign: 'right' }}>{totalPrice.toFixed(2)} $</td>
+          </tr>
+        </tfoot>
+      </table>
+    )
+  };
+
+  const renderCardIsEmpty = () => (
+    <div className={styles.emptyCartContainer}>
+      <IoBagOutline className={styles.emptyCartImage} />
+      <h3 className={styles.emptyCartTitle}>Your Cart is Empty</h3>
+      <button className={styles.emptyButton} onClick={onClose}>Continue Shopping</button>
+    </div>
+  )
 
   return isOpen && (
     <div className={styles.sidebar}>
@@ -49,54 +102,25 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
         </button>
         <h2 className={styles.title}>{title}</h2>
       </div>
-      <table className={styles.cartTable} cellSpacing={0}>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Count</th>
-            <th>Total Amount</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          {isEmpty(cart)
-            ? <h2>Your Cart is Empty</h2>
-            : cart.map((cartItem: CartItemType) => {
-              const { count, product } = cartItem;
-              return (
-                <tr key={product.id}>
-                  <td style={{ display: 'flex', flexDirection: 'column' }}>
-                    <Image className={styles.productImage} src={product.image} alt={"product_image"} width={50} height={50} />
-                    <span>{product.title}</span>
-                  </td>
-                  <td>{count}</td>
-                  <td>{(product.price * count).toFixed(2)}</td>
-                  <td>
-                    <button className={styles.removeButton} onClick={() => removeButtonClickHandler(product.id)}>
-                      <IoClose className={styles.removeIcon} />
-                    </button>
-                  </td>
-                </tr>
-              )
-            })}
-        </tbody>
-        <tfoot>
-          <tr className={styles.tableRow}>
-            <td colSpan={2}>Total Amount</td>
-            <td colSpan={2} style={{ textAlign: 'right' }}>{totalPrice.toFixed(2)} $</td>
-          </tr>
-        </tfoot>
-      </table>
+      {isEmpty(cart)
+        ? renderCardIsEmpty()
+        : renderCartTable()
+      }
+
       <Modal
         isOpen={isModalOpen}
         title='Remove Product'
         onClose={() => dispatch(toggleModal(false))}
       >
-        <div>
-          <h2>Are you sure you want to remove this product from cart?</h2>
+        <div className={styles.modalContentContainer}>
+          <p className={styles.modalContentMessage}>Are you sure you want to remove this product from cart?</p>
           <div className={styles.bottonContainer}>
-            <button onClick={removeRowHandler}>Yes</button>
-            <button onClick={() => setIsModalOpen(false)}>No</button>
+            <Button onClick={removeRowHandler}>
+              <span>Yes</span>
+            </Button>
+            <Button onClick={() => setIsModalOpen(false)}>
+              <span>No</span>
+            </Button>
           </div>
         </div>
       </Modal>
