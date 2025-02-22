@@ -1,0 +1,51 @@
+.modalBackground {
+  position: fixed;
+  width: 100%;
+  height: 100svh;
+  background-color: rgba(0, 0, 0, 0.263);
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  
+
+  .modalContainer {
+    width: 70%;
+    top: 200px;
+    position: fixed;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+
+    .modalHeader {
+      display: flex;
+
+      .modalTitle {
+        flex: 1;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+      .modalCloseButton{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        .modalCloseIcon {
+          width: 28px;
+          height: 28px;
+        }
+      }
+    }
+
+    .modalBody {
+
+    }
+    
+  }
+}

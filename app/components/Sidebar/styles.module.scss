@@ -1,0 +1,99 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 450px;
+  height: 100vh;
+  background-color: #cdcdcd;
+  padding: 20px;
+  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+
+  .closeButton{
+    position: absolute;
+    left: 20px;
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    .closeIcon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    flex: 1;
+    text-align: center;
+  }
+}
+
+
+.cartTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 16px;
+  border-radius: 5px;
+  margin-top: 40px;
+
+  .productImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  thead {
+    background-color: #cdcdcd;
+  }
+
+  th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+
+  tbody {
+    tr {
+      padding: 10px 0;
+      background-color: #cdcdcd;
+      td {
+        padding: 20px 10px;
+        &:nth-child(1) {
+          text-align: left;
+        }
+        text-align: center;
+      }
+    }
+  }
+
+  .tableRow {
+    font-weight: bold;
+    background-color: #e0e0e0;
+  }
+
+  .removeButton {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    .removeIcon {
+      width: 20px;
+      height: 20px;
+      color: red;
+    }
+  }
+}
+
+
+
