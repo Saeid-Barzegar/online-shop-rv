@@ -6,10 +6,9 @@ import { IoBagCheckOutline } from "react-icons/io5";
 import { useDispatch } from 'react-redux';
 import { toggleSideBar } from '@/app/store/slices/commonSlice';
 import { NAVIGATION_ITEMS } from '../constants/navItems';
-import { NavigationPropTypes } from '@/app/types/product.type';
 import styles from "./styles.module.scss"
 
-const Navigation: React.FC<NavigationPropTypes> = () => {
+const Navigation: React.FC = () => {
   const dispatch = useDispatch();
 
   return (

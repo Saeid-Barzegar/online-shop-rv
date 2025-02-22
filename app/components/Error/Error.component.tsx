@@ -1,10 +1,9 @@
 import React from 'react'
 import { IoAlertCircle } from "react-icons/io5";
-import { ErrorComponentPropTypes } from '@/app/types/components.type';
 import LinkButton from '../LinkButton/LinkButton.component';
 import styles from './style.module.scss'
 
-const ErrorComponent: React.FC<ErrorComponentPropTypes> = ({ }) => {
+const ErrorComponent: React.FC = () => {
   return (
     <div className={styles.errorContainer}>
       <IoAlertCircle className={styles.alertIcon} />

@@ -23,5 +23,3 @@ export type CartItemType = {
 export interface CommonSliceInterface {
   isOpenSidebar: boolean;
 };
-
-export interface NavigationPropTypes {}

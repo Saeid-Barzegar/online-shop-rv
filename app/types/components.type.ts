@@ -20,4 +20,3 @@ export interface LoadingPropTypes {
   isLoading: boolean;
 };
 
-export interface ErrorComponentPropTypes { }
