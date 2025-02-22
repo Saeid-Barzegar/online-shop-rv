@@ -31,9 +31,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - Clicking the shopping bag icon in the navigation bar opens a sidebar displaying all added products, including individual and total prices.
 - Users can remove items from the cart, and if they add a product that is already in the cart, its quantity updates instead of duplicating entries.
 
-## Build
-- 
-
 ## Deployment
 
 App already deployed and available at: [`Vercel`](https://online-shop-rv.vercel.app/)
