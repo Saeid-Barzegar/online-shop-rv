@@ -1,8 +1,9 @@
-import { ProductInterface } from '@/app/types/product.type'
+"use client"
+
+import React from 'react'
 import Image from 'next/image'
-import React, { useState } from 'react'
+import { ProductInterface } from '@/app/types/product.type'
 import Rating from '../Rating/Rating.component';
-import { IoBagAddOutline } from "react-icons/io5";
 import styles from './style.module.scss'
 import Link from 'next/link';
 

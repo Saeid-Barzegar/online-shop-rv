@@ -7,8 +7,8 @@ import { ProductInterface } from "./types/product.type";
 import { getProductList } from "./utilities/products";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
-import ProductComponent from "./components/ProductCard/Product.component";
 import { toggleSideBar } from "./store/slices/commonSlice";
+import ProductComponent from "./components/ProductCard/Product.component";
 import Navigation from "./components/Navigation/Navigation.component";
 import Sidebar from "./components/Sidebar/Sidebar.component";
 import Pagination from "./components/Pagination/Pagination.component";
@@ -63,14 +63,7 @@ export default function Home() {
     <>
       <Navigation />
       <div className={styles.container}>
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '1rem',
-          flex: 1,
-          padding: '2rem',
-          flexWrap: 'wrap',
-        }}>
+        <div className={styles.productsContainer} >
           {productsToShow.map((product: ProductInterface) => (
             <ProductComponent
               key={product.id}

@@ -1,3 +1,5 @@
+"use client"
+
 import React, { ReactElement } from 'react'
 import { IoClose } from "react-icons/io5";
 import styles from "./style.module.scss"

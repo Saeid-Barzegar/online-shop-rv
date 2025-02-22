@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: CommonSliceInterface = {
   isOpenSidebar: false,
-  isModalOpen: true,
 };
 
 const commonSlice = createSlice({

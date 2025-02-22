@@ -1,3 +1,5 @@
+"use client"
+
 import { FC } from "react";
 import { FaStar, FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
 import { RatingProps } from "@/app/types/components.type";

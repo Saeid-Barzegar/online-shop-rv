@@ -1,22 +1,23 @@
 'use client'
 
-import Navigation from "@/app/components/Navigation/Navigation.component";
-import { useParams } from "next/navigation";
 import React, { useState } from "react";
-import styles from "./page.module.scss"
-import Sidebar from "@/app/components/Sidebar/Sidebar.component";
+import Image from "next/image";
+import get from "lodash/get";
+import isEmpty from "lodash/isEmpty";
+import { useParams } from "next/navigation";
+import { addToCart, updateItemCount } from "@/app/store/slices/shopSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { toggleSideBar } from "@/app/store/slices/commonSlice";
 import { useQuery } from "@tanstack/react-query";
 import { ProductInterface } from "@/app/types/product.type";
 import { getProductDetails } from "@/app/utilities/products";
-import { get, isEmpty } from "lodash";
-import Image from "next/image";
 import Rating from "@/app/components/Rating/Rating.component";
 import AddAmountButton from "@/app/components/AddAmountButton/AddAmountButton.component";
 import Button from "@/app/components/Button/Button.component";
-import { addToCart, updateItemCount } from "@/app/store/slices/shopSlice";
+import Navigation from "@/app/components/Navigation/Navigation.component";
+import Sidebar from "@/app/components/Sidebar/Sidebar.component";
+import styles from "./page.module.scss"
 
 const ProductPage: React.FC = () => {
   const params = useParams();
@@ -30,7 +31,7 @@ const ProductPage: React.FC = () => {
   const { data, isLoading, error } = useQuery<ProductInterface>({
     queryKey: ["productDetails"],
     queryFn: () => getProductDetails(Number(productId)),
-    // enabled: !isNaN(productId),
+    enabled: !isNaN(productId),
   });
 
   const productRate = get(data, 'rating.rate', 0);

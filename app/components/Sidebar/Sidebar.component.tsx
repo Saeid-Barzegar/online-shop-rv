@@ -2,18 +2,17 @@
 
 import React, { useState } from 'react'
 import Image from 'next/image';
+import isEmpty from "lodash/isEmpty";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
 import { CartItemType } from '@/app/types/product.type';
-import { isEmpty } from 'lodash';
 import { removeFromCart } from '@/app/store/slices/shopSlice';
-import { toggleModal } from '@/app/store/slices/commonSlice';
-import Modal from '../Modal/Modal.component';
-import { IoClose } from "react-icons/io5";
-import styles from "./styles.module.scss";
 import { SidebarPropTypes } from '@/app/types/components.type';
-import { IoBagOutline } from "react-icons/io5";
+import Modal from '../Modal/Modal.component';
 import Button from '../Button/Button.component';
+import { toggleModal } from '@/app/store/slices/commonSlice';
+import { IoClose, IoBagOutline } from "react-icons/io5";
+import styles from "./styles.module.scss";
 
 const Sidebar: React.FC<SidebarPropTypes> = ({
   isOpen = true,
