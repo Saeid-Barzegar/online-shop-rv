@@ -19,3 +19,8 @@ export type CartItemType = {
   product: ProductInterface;
   count: number;
 };
+
+export interface CommonSliceInterface {
+  isOpenSidebar: boolean;
+  isModalOpen: boolean;
+};

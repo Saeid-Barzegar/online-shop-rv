@@ -1,11 +1,9 @@
-import { ICONS } from '@/app/assets/icons';
 import { ProductInterface } from '@/app/types/product.type'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import styles from './style.module.scss'
-import AddAmountButton from '../AddAmountButton/AddAmountButton.component';
-import { IoBagAddOutline } from "react-icons/io5";
 import Rating from '../Rating/Rating.component';
+import { IoBagAddOutline } from "react-icons/io5";
+import styles from './style.module.scss'
 
 interface ProductComponentPropTypes {
   product: ProductInterface;
@@ -41,11 +39,6 @@ const ProductComponent: React.FC<ProductComponentPropTypes> = ({
       </div>
       <div className={styles.prpductPriceContainer}>
         <span className={styles.productPrice}>{product.price.toFixed(2)} $</span>
-        {/* <AddAmountButton
-          number={number}
-          onIncrement={handleIncrement}
-          onDecrement={handleDecrement}
-        /> */}
         <button className={styles.addToCartButton} onClick={() => onAddToCart(product.id)}>
           <IoBagAddOutline className={styles.addToCartIcon} />
         </button>

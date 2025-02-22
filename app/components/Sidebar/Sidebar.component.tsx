@@ -1,22 +1,17 @@
 "use client"
 
 import React, { useState } from 'react'
-import styles from "./styles.module.scss";
-import { IoClose } from "react-icons/io5";
+import Image from 'next/image';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
-import { CartItemType, ProductInterface } from '@/app/types/product.type';
+import { CartItemType } from '@/app/types/product.type';
 import { isEmpty } from 'lodash';
-import Image from 'next/image';
 import { removeFromCart } from '@/app/store/slices/shopSlice';
 import { toggleModal } from '@/app/store/slices/commonSlice';
 import Modal from '../Modal/Modal.component';
-
-interface SidebarPropTypes {
-  isOpen: boolean;
-  title: string;
-  onClose: () => void;
-}
+import { IoClose } from "react-icons/io5";
+import styles from "./styles.module.scss";
+import { SidebarPropTypes } from '@/app/types/components.type';
 
 const Sidebar: React.FC<SidebarPropTypes> = ({
   isOpen = true,

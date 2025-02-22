@@ -1,10 +1,5 @@
+import { CommonSliceInterface } from "@/app/types/product.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-
-
-export interface CommonSliceInterface {
-  isOpenSidebar: boolean;
-  isModalOpen: boolean;
-};
 
 const initialState: CommonSliceInterface = {
   isOpenSidebar: false,

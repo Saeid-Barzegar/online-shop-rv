@@ -1,13 +1,6 @@
 import { FC } from "react";
 import { FaStar, FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
-
-
-interface RatingProps {
-  rating: number; // Rating value (0 - 5, supports decimals)
-  maxStars?: number; // Total stars (default: 5)
-  size?: string; // Icon size (default: "24px")
-  color?: string; // Star color (default: "#FFD700" - gold)
-}
+import { RatingProps } from "@/app/types/components.type";
 
 const Rating: FC<RatingProps> = ({
   rating,

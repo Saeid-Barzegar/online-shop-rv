@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import React, { useReducer } from 'react'
+import React from 'react'
 import { IoBagCheckOutline } from "react-icons/io5";
-import styles from "./styles.module.scss"
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/index';
+import { useDispatch } from 'react-redux';
 import { toggleSideBar } from '@/app/store/slices/commonSlice';
+import styles from "./styles.module.scss"
 
 type Props = {}
 

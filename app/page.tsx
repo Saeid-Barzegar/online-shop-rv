@@ -3,16 +3,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { ProductInterface } from "./types/product.type";
 import { getProductList } from "./utilities/products";
-import ShopScreen from "./screens/Shop.screen";
-import styles from "./page.module.scss"
-import Navigation from "./components/Navigation/Navigation.component";
-import ProductComponent from "./components/ProductCard/Product.component";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
 import { addToCart } from "./store/slices/shopSlice";
-import Modal from "./components/Modal/Modal.component";
-import Sidebar from "./components/Sidebar/Sidebar.component";
+import Navigation from "./components/Navigation/Navigation.component";
+import ProductComponent from "./components/ProductCard/Product.component";
 import { toggleSideBar } from "./store/slices/commonSlice";
+import Sidebar from "./components/Sidebar/Sidebar.component";
+import styles from "./page.module.scss"
 
 
 export default function Home() {
@@ -54,12 +52,6 @@ export default function Home() {
           ))
           }
         </div>
-        {/* <Modal isOpen={true} onClose={() => { }} >
-          <div>
-            <h1>Modal Content</h1>
-            <p>This is a modal content</p>
-          </div>
-        </Modal> */}
 
       </div >
       <Sidebar
