@@ -39,6 +39,10 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
   const removeRowHandler = () => {
     dispatch(removeFromCart(setSelectedToRemove));
     setIsModalOpen(false);
+  };
+
+  const modalCloseHandler = () => {
+    dispatch(toggleModal(false));
   }
 
   const renderCartTable = () => {
@@ -103,15 +107,12 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
         </button>
         <h2 className={styles.title}>{title}</h2>
       </div>
-      {isEmpty(cart)
-        ? renderCardIsEmpty()
-        : renderCartTable()
-      }
+      {isEmpty(cart) ? renderCardIsEmpty() : renderCartTable()}
 
       <Modal
         isOpen={isModalOpen}
         title='Remove Product'
-        onClose={() => dispatch(toggleModal(false))}
+        onClose={modalCloseHandler}
       >
         <div className={styles.modalContentContainer}>
           <p className={styles.modalContentMessage}>Are you sure you want to remove this product from cart?</p>

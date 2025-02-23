@@ -21,25 +21,34 @@ export default function Home() {
 
   const dispatch = useDispatch()
   const { isOpenSidebar } = useSelector((state: RootState) => state.common);
-  const [productsToShow, setProductsToShow] = useState<ProductInterface[]>([])
+  // pages data beind stored in this state
+  const [productsToShow, setProductsToShow] = useState<ProductInterface[]>([]);
+  // pagination data
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
     totalPages: 1,
     itemsPerPage: 10,
   });
-
+  // handle fetch product list from API
   const { data = [], isLoading, error } = useQuery<ProductInterface[]>({
     queryKey: ["productList"],
     queryFn: getProductList,
   });
 
+  // handle change page number
   const handleChangePage = (page: number) => {
     setPaginationData(state => ({
       ...state,
       currentPage: page,
     }))
+  };
+
+  // sidebar onClose event
+  const sidebarCloseHandler = () => {
+    dispatch(toggleSideBar(false))
   }
 
+  // recalculate the total page numbers ahen data changed
   useEffect(() => {
     if (!isEmpty(data)) {
       setPaginationData({
@@ -49,6 +58,7 @@ export default function Home() {
     }
   }, [data]);
 
+  // recalculate page related data when current page and data have changed
   useEffect(() => {
     if (!isEmpty(data)) {
       const start = (paginationData.currentPage - 1) * paginationData.itemsPerPage;
@@ -57,7 +67,9 @@ export default function Home() {
     }
   }, [data, paginationData.currentPage])
 
+  // Display error page when error occoured while calling API 
   if (error) return <ErrorComponent />
+  // Display loading when API being called
   if (isLoading) return <Loading isLoading />
 
   return (
@@ -83,9 +95,7 @@ export default function Home() {
       </div >
       <Sidebar
         isOpen={isOpenSidebar}
-        onClose={() => {
-          dispatch(toggleSideBar(false))
-        }}
+        onClose={sidebarCloseHandler}
         title="Shopping Cart"
       />
     </>

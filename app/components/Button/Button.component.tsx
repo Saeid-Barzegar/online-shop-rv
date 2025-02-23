@@ -6,7 +6,7 @@ type ButtonPropTypes = {
   onClick: () => void;
   disabled?: boolean;
   children?: ReactElement;
-  mode?: 'light' | 'dark'
+  mode?: 'light' | 'dark';
 }
 
 const Button: React.FC<ButtonPropTypes> = ({

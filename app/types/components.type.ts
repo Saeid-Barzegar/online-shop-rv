@@ -1,3 +1,4 @@
+import { ProductInterface } from "./product.type"
 export interface RatingProps {
   rating: number;
   maxStars?: number;
@@ -18,3 +19,6 @@ export interface LoadingPropTypes {
   isLoading: boolean;
 };
 
+export interface ProductComponentPropTypes {
+  product: ProductInterface;
+}

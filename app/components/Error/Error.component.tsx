@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { IoAlertCircle } from "react-icons/io5";
 import LinkButton from '../LinkButton/LinkButton.component';
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
 const ErrorComponent: React.FC = () => {
   return (

@@ -2,14 +2,10 @@
 
 import React from 'react'
 import Image from 'next/image'
-import { ProductInterface } from '@/app/types/product.type'
+import { ProductComponentPropTypes } from '@/app/types/components.type'
 import Rating from '../Rating/Rating.component';
-import styles from './style.module.scss'
 import Link from 'next/link';
-
-interface ProductComponentPropTypes {
-  product: ProductInterface;
-}
+import styles from './style.module.scss'
 
 const ProductComponent: React.FC<ProductComponentPropTypes> = ({
   product,

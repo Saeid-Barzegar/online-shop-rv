@@ -10,6 +10,7 @@ import styles from "./styles.module.scss"
 
 const Navigation: React.FC = () => {
   const dispatch = useDispatch();
+  const sidebarToggleHandler = () => dispatch(toggleSideBar(true));
 
   return (
     <nav className={styles.navContainer}>
@@ -21,7 +22,7 @@ const Navigation: React.FC = () => {
         ))}
       </ul>
       <div className={styles.cartContainer}>
-        <button onClick={() => dispatch(toggleSideBar(true))} className={styles.cartBotton} >
+        <button onClick={sidebarToggleHandler} className={styles.cartBotton} >
           <IoBagCheckOutline className={styles.cartIcon} />
         </button>
       </div>

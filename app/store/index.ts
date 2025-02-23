@@ -1,7 +1,7 @@
 import { configureStore, combineReducers  } from "@reduxjs/toolkit";
 import { logger } from "redux-logger";
-import commonSlice from './slices/commonSlice'
-import shopSlice from './slices/shopSlice'
+import commonSlice from './slices/commonSlice';
+import shopSlice from './slices/shopSlice';
 
 const rootReducer = combineReducers({
   common: commonSlice,

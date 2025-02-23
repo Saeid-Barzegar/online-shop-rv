@@ -30,17 +30,22 @@ const ProductPage: React.FC = () => {
 
   const [count, setCount] = useState<number>(0);
 
+  // fetch product details API
   const { data, isLoading, error } = useQuery<ProductInterface>({
     queryKey: ["productDetails"],
     queryFn: () => getProductDetails(Number(productId)),
     enabled: !isNaN(productId),
   });
 
+  // product rating, "No need useMemo in Ract 19"
   const productRate = get(data, 'rating.rate', 0);
 
+  // plus button action for product amount
   const handleIncrement = () => {
     setCount(state => state + 1);
-  }
+  };
+
+  // minus button action for product amount
   const handleDecrement = () => {
     if (count > 0) {
       setCount(state => state - 1);
@@ -48,27 +53,44 @@ const ProductPage: React.FC = () => {
   }
 
   const handleAddToCard = () => {
+    // shows error message once user didn't change default amount
     if (count === 0) {
       alert("Please select the amount of product to add to cart")
       return;
     }
     if (data) {
+      // checks the product already added to the cart or not
       const isAlreadyAdded = cart.filter((cartItem) => cartItem.product.id === productId).length > 0;
       if (isAlreadyAdded) {
+        /**
+         * if product already added to cart, 
+         * update item count will be called 
+         * to only update the number of product
+         * instead of add a new item
+         */
         dispatch(updateItemCount({
           product: data,
           count
         }))
-        alert("Cart updated successfully")
+        alert("Cart updated successfully");
       } else {
+        /**
+         * if product not added to cart before
+         * add to cart action will be called
+         */
         dispatch(addToCart({
           product: data,
           count
         }))
         alert("Product added successfully")
       }
+      // after saccessful action call count state will be reset
       setCount(0);
     }
+  };
+
+  const closeSidebarHandler = () => {
+    dispatch(toggleSideBar(false))
   }
 
   if (error) return <ErrorComponent />
@@ -113,9 +135,7 @@ const ProductPage: React.FC = () => {
 
         <Sidebar
           isOpen={isOpenSidebar}
-          onClose={() => {
-            dispatch(toggleSideBar(false))
-          }}
+          onClose={closeSidebarHandler}
           title="Shopping Cart"
         />
       </div>

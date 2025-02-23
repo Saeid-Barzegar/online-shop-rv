@@ -5,8 +5,9 @@ import { useState } from "react";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 interface QueryClientProviderProps {
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
+
 export default function QueryProvider({ children }: Readonly<QueryClientProviderProps>) {
   const [queryClient] = useState(() => new QueryClient({
     defaultOptions: {
