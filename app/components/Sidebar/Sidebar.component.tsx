@@ -22,7 +22,6 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
 
   const dispatch = useDispatch();
   const { cart } = useSelector((state: RootState) => state.shop);
-
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [setSelectedToRemove, setSetSelectedToRemove] = useState<number>(-1)
 
@@ -41,9 +40,7 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
     setIsModalOpen(false);
   };
 
-  const modalCloseHandler = () => {
-    dispatch(toggleModal(false));
-  }
+  const modalCloseHandler = () => dispatch(toggleModal(false));
 
   const renderCartTable = () => {
     return (

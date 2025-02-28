@@ -2,26 +2,20 @@
 
 import { FC } from "react";
 import { FaStar, FaRegStarHalfStroke, FaRegStar } from "react-icons/fa6";
-import { RatingProps } from "@/app/types/components.type";
+import { RatingPropTypes } from "@/app/types/components.type";
 import styles from "./style.module.scss";
 
-const Rating: FC<RatingProps> = ({
-  rating,
-  maxStars = 5,
-}) => {
-  const stars = [];
-
-  for (let i = 0; i < maxStars; i++) {
-    if (rating >= i + 1) {
-      stars.push(<FaStar key={i} className={styles.star} />);
-    } else if (rating > i && rating < i + 1) {
-      stars.push(<FaRegStarHalfStroke key={i} className={styles.star} />);
-    } else {
-      stars.push(<FaRegStar key={i} className={styles.star} />);
-    }
-  }
-
-  return <div className={styles.rating}>{stars}</div>;
+const renderStars = (rating: number, index: number) => {
+  if (rating >= index + 1) return <FaStar key={index} className={styles.star} />;
+  if (rating > index) return <FaRegStarHalfStroke key={index} className={styles.star} />;
+  return <FaRegStar key={index} className={styles.star} />;
 };
 
+const Rating: FC<RatingPropTypes> = ({ rating, maxStars = 5 }) => (
+  <div className={styles.rating}>
+    {Array.from({ length: maxStars }, (_, index) => renderStars(rating, index))}
+  </div>
+);
+
 export default Rating;
+

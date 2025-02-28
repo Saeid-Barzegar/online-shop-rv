@@ -1,22 +1,17 @@
 "use client"
 
 import React from "react";
+import { PaginationPropTypes } from "@/app/types/components.type";
 import styles from "./style.module.scss";
 
-interface PaginationProps {
-  currentPage: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
+const Pagination: React.FC<PaginationPropTypes> = ({
+  currentPage,
+  totalPages,
+  onPageChange
+}) => {
 
-const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages, onPageChange }) => {
-  const handlePrev = () => {
-    if (currentPage > 1) onPageChange(currentPage - 1);
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) onPageChange(currentPage + 1);
-  };
+  const handlePrev = () => currentPage > 1 && onPageChange(currentPage - 1);
+  const handleNext = () => currentPage < totalPages && onPageChange(currentPage + 1);
 
   return (
     <div className={styles.pagination}>

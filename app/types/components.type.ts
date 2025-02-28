@@ -1,5 +1,5 @@
 import { ProductInterface } from "./product.type"
-export interface RatingProps {
+export interface RatingPropTypes {
   rating: number;
   maxStars?: number;
 }
@@ -21,4 +21,14 @@ export interface LoadingPropTypes {
 
 export interface ProductComponentPropTypes {
   product: ProductInterface;
+}
+
+export interface ErrorComponentPropTypes {
+  message?: string;
+}
+
+export interface PaginationPropTypes {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
 }

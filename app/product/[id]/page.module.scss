@@ -13,11 +13,11 @@
     margin-top: 40px;
   }
 
-   .productImage {
+  .imageContainer{
+    position: relative;
     width: 300px;
-    height: 300px;
-   }
-
+    height: 400px;
+  }
   .productCategory {
     margin-top: 40px;
     display: flex;

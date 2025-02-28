@@ -1,7 +1,6 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react";
-import isEmpty from "lodash/isEmpty";
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { ProductInterface } from "./types/product.type";
 import { getProductList } from "./utilities/products";
@@ -14,90 +13,57 @@ import Sidebar from "./components/Sidebar/Sidebar.component";
 import Pagination from "./components/Pagination/Pagination.component";
 import Loading from "./components/Loading/Loading.component";
 import ErrorComponent from "./components/Error/Error.component";
-import styles from "./page.module.scss"
-
+import styles from "./page.module.scss";
 
 export default function Home() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const { isOpenSidebar } = useSelector((state: RootState) => state.common);
-  // pages data beind stored in this state
-  const [productsToShow, setProductsToShow] = useState<ProductInterface[]>([]);
-  // pagination data
+
+  // Pagination state
   const [paginationData, setPaginationData] = useState({
     currentPage: 1,
-    totalPages: 1,
     itemsPerPage: 10,
   });
-  // handle fetch product list from API
+
+  // Fetch product list
   const { data = [], isLoading, error } = useQuery<ProductInterface[]>({
     queryKey: ["productList"],
     queryFn: getProductList,
   });
 
-  // handle change page number
-  const handleChangePage = (page: number) => {
-    setPaginationData(state => ({
-      ...state,
-      currentPage: page,
-    }))
-  };
+  // Calculate total pages dynamically
+  const totalPages = Math.ceil(data.length / paginationData.itemsPerPage);
 
-  // sidebar onClose event
-  const sidebarCloseHandler = () => {
-    dispatch(toggleSideBar(false))
-  }
+  // Slice products for current page
+  const start = (paginationData.currentPage - 1) * paginationData.itemsPerPage;
+  const end = start + paginationData.itemsPerPage;
+  const productsToShow = data.slice(start, end);
 
-  // recalculate the total page numbers ahen data changed
-  useEffect(() => {
-    if (!isEmpty(data)) {
-      setPaginationData({
-        ...paginationData,
-        totalPages: Math.ceil(data.length / paginationData.itemsPerPage)
-      });
-    }
-  }, [data]);
+  // Handle page change
+  const handleChangePage = (page: number) =>
+    setPaginationData((state) => ({ ...state, currentPage: page }));
 
-  // recalculate page related data when current page and data have changed
-  useEffect(() => {
-    if (!isEmpty(data)) {
-      const start = (paginationData.currentPage - 1) * paginationData.itemsPerPage;
-      const end = start + paginationData.itemsPerPage;
-      setProductsToShow(data.slice(start, end));
-    }
-  }, [data, paginationData.currentPage])
-
-  // Display error page when error occoured while calling API 
-  if (error) return <ErrorComponent />
-  // Display loading when API being called
-  if (isLoading) return <Loading isLoading />
+  if (error) return <ErrorComponent />;
+  if (isLoading) return <Loading isLoading />;
 
   return (
     <>
       <Navigation />
       <div className={styles.container}>
-        <div className={styles.productsContainer} >
-          {productsToShow.map((product: ProductInterface) => (
-            <ProductComponent
-              key={product.id}
-              product={product}
-            />
-          ))
-          }
+        <div className={styles.productsContainer}>
+          {productsToShow.map((product) => (
+            <ProductComponent key={product.id} product={product} />
+          ))}
         </div>
         <div className={styles.paginationContainer}>
           <Pagination
             currentPage={paginationData.currentPage}
-            totalPages={paginationData.totalPages}
-            onPageChange={(page: number) => handleChangePage(page)}
+            totalPages={totalPages}
+            onPageChange={handleChangePage}
           />
         </div>
-      </div >
-      <Sidebar
-        isOpen={isOpenSidebar}
-        onClose={sidebarCloseHandler}
-        title="Shopping Cart"
-      />
+      </div>
+      <Sidebar isOpen={isOpenSidebar} onClose={() => dispatch(toggleSideBar(false))} title="Shopping Cart" />
     </>
   );
-}
+};

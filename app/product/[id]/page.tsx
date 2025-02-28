@@ -41,16 +41,10 @@ const ProductPage: React.FC = () => {
   const productRate = get(data, 'rating.rate', 0);
 
   // plus button action for product amount
-  const handleIncrement = () => {
-    setCount(state => state + 1);
-  };
+  const handleIncrement = () => setCount(state => state + 1);;
 
   // minus button action for product amount
-  const handleDecrement = () => {
-    if (count > 0) {
-      setCount(state => state - 1);
-    }
-  }
+  const handleDecrement = () => count > 0 && setCount(state => state - 1)
 
   const handleAddToCard = () => {
     // shows error message once user didn't change default amount
@@ -60,38 +54,26 @@ const ProductPage: React.FC = () => {
     }
     if (data) {
       // checks the product already added to the cart or not
-      const isAlreadyAdded = cart.filter((cartItem) => cartItem.product.id === productId).length > 0;
-      if (isAlreadyAdded) {
-        /**
-         * if product already added to cart, 
-         * update item count will be called 
-         * to only update the number of product
-         * instead of add a new item
-         */
-        dispatch(updateItemCount({
-          product: data,
-          count
-        }))
-        alert("Cart updated successfully");
-      } else {
-        /**
-         * if product not added to cart before
-         * add to cart action will be called
-         */
-        dispatch(addToCart({
-          product: data,
-          count
-        }))
-        alert("Product added successfully")
-      }
+      const isAlreadyAdded = cart.some((item) => item.product.id === productId);
+      dispatch(
+        isAlreadyAdded
+          ? updateItemCount({
+            product: data,
+            count
+          })
+          : addToCart({
+            product: data,
+            count
+          })
+      )
+      // 
+      alert(isAlreadyAdded ? "Cart updated successfully" : "Product added successfully")
       // after saccessful action call count state will be reset
       setCount(0);
     }
   };
 
-  const closeSidebarHandler = () => {
-    dispatch(toggleSideBar(false))
-  }
+  const closeSidebarHandler = () => dispatch(toggleSideBar(false));
 
   if (error) return <ErrorComponent />
   if (isLoading) return <Loading isLoading />
@@ -103,7 +85,14 @@ const ProductPage: React.FC = () => {
         {!isEmpty(data) && (
           <>
             <h3 className={styles.productTitle}>{data.title}</h3>
-            <Image width={300} height={400} src={data.image} alt="" />
+            <div className={styles.imageContainer}>
+              <Image
+                layout="fill"
+                objectFit="contain"
+                src={data.image}
+                alt=""
+              />
+            </div>
             <p className={styles.productCategory}>
               Category: <span className={styles.categoryLabel}>
                 {data.category}
