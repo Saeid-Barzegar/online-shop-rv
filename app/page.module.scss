@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   background-color: var(--color-background);
   height: 100svh;
   padding: 0;
@@ -13,7 +13,7 @@
   .productsContainer {
     display: flex;
     flex: 1;
-    justify-content: start;
+    justify-content: flex-start;
     gap: 1rem;
     padding: 2rem;
     flex-wrap: wrap;
