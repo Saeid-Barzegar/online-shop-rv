@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Image from "next/legacy/image";
 import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
@@ -86,11 +86,11 @@ const ProductPage: React.FC = () => {
   };
 
   // reset alert state to remove alert messages
-  const resetAlert = () => setAlert(prevAlert => ({
+  const resetAlert = useCallback(() => setAlert(prevAlert => ({
     ...prevAlert,
     mode: "",
     message: "",
-  }));
+  })), [])
 
   // handle sidebar close event
   const closeSidebarHandler = () => dispatch(toggleSideBar(false));

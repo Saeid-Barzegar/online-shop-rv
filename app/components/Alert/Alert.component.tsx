@@ -7,7 +7,7 @@ import styles from "./style.module.scss";
 const Alert: React.FC<AlertPropTypes> = ({
   mode = "info",
   message = "",
-  onClose = () => { }
+  onClose
 }) => {
 
   useEffect(() => {
