@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react'
-import Image from 'next/image';
+import Image from "next/image";
 import isEmpty from "lodash/isEmpty";
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../store';
@@ -59,7 +59,14 @@ const Sidebar: React.FC<SidebarPropTypes> = ({
             return (
               <tr key={product.id}>
                 <td style={{ display: 'flex', flexDirection: 'column' }}>
-                  <Image className={styles.productImage} src={product.image} alt={"product_image"} width={50} height={50} />
+                  <Image
+                    className={styles.productImage}
+                    src={product.image}
+                    alt={"product_image"}
+                    width={50}
+                    height={50}
+                    priority
+                  />
                   <span>{product.title}</span>
                 </td>
                 <td>{count}</td>

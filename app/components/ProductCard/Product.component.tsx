@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import { ProductComponentPropTypes } from '@/app/types/components.type'
 import Rating from '../Rating/Rating.component';
 import Link from 'next/link';
@@ -22,6 +22,7 @@ const ProductComponent: React.FC<ProductComponentPropTypes> = ({
             layout="fill"
             objectFit="contain"
             alt="product_image"
+            priority
           />
         </div>
         <div className={styles.bottomContainer}>

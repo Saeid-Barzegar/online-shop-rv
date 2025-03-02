@@ -42,6 +42,8 @@ export default function Home() {
   const handleChangePage = (page: number) =>
     setPaginationData((state) => ({ ...state, currentPage: page }));
 
+  const handleCloseSideBar = () => dispatch(toggleSideBar(false))
+
   if (error) return <ErrorComponent />;
   if (isLoading) return <Loading isLoading />;
 
@@ -64,7 +66,7 @@ export default function Home() {
       <Sidebar
         isOpen={isOpenSidebar}
         title="Shopping Cart"
-        onClose={() => dispatch(toggleSideBar(false))}
+        onClose={handleCloseSideBar}
       />
     </>
   );

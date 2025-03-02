@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from "react";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import get from "lodash/get";
 import isEmpty from "lodash/isEmpty";
 import { useParams } from "next/navigation";

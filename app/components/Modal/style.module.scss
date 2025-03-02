@@ -11,9 +11,9 @@
   
 
   .modalContainer {
-    width: 70%;
+    width: 40%;
     top: 200px;
-    position: fixed;
+    position: absolute;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -42,10 +42,21 @@
         }
       }
     }
+  }
+}
 
-    .modalBody {
-
+@media (max-width: 1024px) {
+  .modalBackground{
+    .modalContainer {
+      width: 60%;
     }
-    
+  }
+}
+
+@media (max-width: 768px) {
+  .modalBackground{
+    .modalContainer {
+      width: 90%;
+    }
   }
 }
