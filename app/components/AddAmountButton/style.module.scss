@@ -1,35 +1,36 @@
-.addButtonContainer {
+.centerAlignedFlexBox {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.addButtonContainer {
+  @extend .centerAlignedFlexBox;
+  width: 105px;
 
   .decrementButton{ 
-    width: 20px;
-    height: 25px; 
+    width: 30px;
+    height: 35px; 
     border: 1px solid #979797;
-    border-radius: 3px 0 0 3px;
-    font-size: 12pt;
+    border-radius: 5px 0 0 5px;
+    font-size: 15pt;
+    cursor: pointer;
   }
 
   .amountOfProduct {
-    width: 30px;
-    height: 25px;
-    text-align: center;
-    border-radius: 0;
+    @extend .centerAlignedFlexBox;
+    width: 35px;
+    height: 35px;
     border: 1px solid #979797;
+    border-radius: 0;
     border-left: none;
     border-right: none;
     padding: 0;
-    display: flex;
-    justify-content: center;
     align-items: center;
   }
 
   .incrementButton{
-    width: 20px;
-    height: 25px; 
-    border: 1px solid #979797;
-    border-radius: 0 3px 3px 0;
-    font-size: 12pt;
+    @extend .decrementButton;
+    border-radius: 0 5px 5px 0;
   }
 }

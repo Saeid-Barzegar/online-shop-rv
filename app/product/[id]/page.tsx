@@ -21,20 +21,20 @@ import Loading from "@/app/components/Loading/Loading.component";
 import ErrorComponent from "@/app/components/Error/Error.component";
 import Alert from "@/app/components/Alert/Alert.component";
 import styles from "./page.module.scss";
+import LinkButton from "@/app/components/LinkButton/LinkButton.component";
 
 
 const ProductPage: React.FC = () => {
   const params = useParams();
+  const productId = Number(params?.id);
   const dispatch = useDispatch();
   const { isOpenSidebar } = useSelector((state: RootState) => state.common);
   const { cart } = useSelector((state: RootState) => state.shop);
+  const [count, setCount] = useState<number>(0);
   const [alert, setAlert] = useState<AlertType>({
     mode: "",
     message: "",
   });
-  const productId = Number(params?.id);
-
-  const [count, setCount] = useState<number>(0);
 
   // fetch product details API
   const { data, isLoading, error } = useQuery<ProductInterface>({
@@ -75,7 +75,7 @@ const ProductPage: React.FC = () => {
             count
           })
       )
-      //
+      // show message when product added to the shopping cart
       setAlert({
         mode: "success",
         message: isAlreadyAdded ? "Product updated in cart, successfully" : "Product added successfully",
@@ -85,14 +85,25 @@ const ProductPage: React.FC = () => {
     }
   };
 
+  // reset alert state to remove alert messages
   const resetAlert = () => setAlert(prevAlert => ({
     ...prevAlert,
     mode: "",
     message: "",
   }));
 
+  // handle sidebar close event
   const closeSidebarHandler = () => dispatch(toggleSideBar(false));
 
+  // renders message once product id is not correct
+  const renderWrongProducID = () => (
+    <div className={styles.wrongIdContainer}>
+      <h2 className={styles.wrongIdMessage}>{`Wrong product Id: ${params.id}`}</h2>
+      <LinkButton path="/">Back</LinkButton>
+    </div>
+  );
+
+  if (isNaN(productId)) return renderWrongProducID()
   if (error) return <ErrorComponent />
   if (isLoading) return <Loading isLoading />
 
