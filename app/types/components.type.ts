@@ -32,3 +32,17 @@ export interface PaginationPropTypes {
   totalPages: number;
   onPageChange: (page: number) => void;
 }
+
+export type AlertModeType = "info" | "success" | "warning" | "danger";
+
+export interface AlertPropTypes {
+  mode: AlertModeType;
+  message: string;
+  onClose: () => void;
+}
+
+export type AlertType = {
+  mode: AlertModeType | "";
+  message: string,
+  timeout?: number;
+}

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AppProvider from "@/app/providers/AppProvider";
+import Navigation from "@/app/components/Navigation/Navigation.component";
 
 export const metadata: Metadata = {
   title: "Product details",
@@ -14,6 +15,7 @@ export default function ProductDetails({
 }>) {
   return (
     <AppProvider>
+      <Navigation />
       {children}
     </AppProvider>
   );

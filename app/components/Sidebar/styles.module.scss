@@ -6,11 +6,11 @@
   height: 100vh;
   background-color: #cdcdcd;
   padding: 20px;
-  box-shadow: -3px 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 900;
+  border-left: 2px solid rgb(199, 199, 199);
 }
 
 .headerContainer {
@@ -53,6 +53,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    margin-bottom: 5px;
   }
   
   thead {
@@ -105,6 +106,7 @@
   align-items: center;
 
   .emptyCartImage {
+    margin-top: -100px;
     width: 150px;
     height: 150px;
     margin-bottom: 20px;

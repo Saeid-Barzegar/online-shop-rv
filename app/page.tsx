@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "./store";
 import { toggleSideBar } from "./store/slices/commonSlice";
 import ProductComponent from "./components/ProductCard/Product.component";
-import Navigation from "./components/Navigation/Navigation.component";
 import Sidebar from "./components/Sidebar/Sidebar.component";
 import Pagination from "./components/Pagination/Pagination.component";
 import Loading from "./components/Loading/Loading.component";
@@ -48,7 +47,6 @@ export default function Home() {
 
   return (
     <>
-      <Navigation />
       <div className={styles.container}>
         <div className={styles.productsContainer}>
           {productsToShow.map((product) => (
@@ -63,7 +61,11 @@ export default function Home() {
           />
         </div>
       </div>
-      <Sidebar isOpen={isOpenSidebar} onClose={() => dispatch(toggleSideBar(false))} title="Shopping Cart" />
+      <Sidebar
+        isOpen={isOpenSidebar}
+        title="Shopping Cart"
+        onClose={() => dispatch(toggleSideBar(false))}
+      />
     </>
   );
 };

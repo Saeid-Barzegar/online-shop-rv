@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { ProductComponentPropTypes } from '@/app/types/components.type'
 import Rating from '../Rating/Rating.component';
 import Link from 'next/link';
-import styles from './style.module.scss'
+import styles from './style.module.scss';
 
 const ProductComponent: React.FC<ProductComponentPropTypes> = ({
   product,
@@ -36,6 +36,6 @@ const ProductComponent: React.FC<ProductComponentPropTypes> = ({
       </div>
     </Link>
   )
-}
+};
 
-export default ProductComponent
+export default ProductComponent;
