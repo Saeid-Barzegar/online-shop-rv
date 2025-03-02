@@ -1,12 +1,13 @@
 :root {
   --color-background: #fff;
-  --color-primary: #057af7;
-  --color-secondary: #6c757d;
-  --color-success: #28a745;
-  --color-danger: #dc3545;
-  --color-warning: #ffc107;
-  --color-info: #17a2b8;
-  --color-light: #f8f9fa;
+  --color-info: #0c5460;   
+  --color-success: #155724;
+  --color-warning: #856404;
+  --color-danger: #721c24; 
+  --background-info: #d1ecf1;   
+  --background-success: #d4edda;
+  --background-warning: #fff3cd;
+  --background-danger: #f8d7da; 
   --color-dark: #343a40;
   --color-white: #fff;
   --color-black: #000;

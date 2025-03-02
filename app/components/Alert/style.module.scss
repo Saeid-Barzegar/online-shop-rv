@@ -1,0 +1,64 @@
+.container {
+  position: absolute;
+  display: flex;
+  left: 40px;
+  bottom: 70px;
+  height: 70px;
+  width: full;
+  background-color: rgb(227, 199, 147);
+  align-items: center;
+  padding: 5px 25px 5px 10px;
+  border-radius: 8px;
+  z-index: 500;
+
+  .closeButton{
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .closeIcon {
+    font-size: 18pt;
+  }
+
+  .message {
+    font-size: 12pt;
+  }
+}
+
+.successBackground {
+  background-color: var(--background-success);
+}
+
+.successColor {
+  color: var(--color-success);
+}
+
+.warningBackground {
+  background-color: var(--background-warning);
+}
+
+.warningColor {
+  color: var(--color-warning);
+}
+
+.dangerBackground {
+  background-color: var(--background-danger);
+}
+
+.dangerColor {
+  color: var(--color-danger);
+}
+
+.infoBackground {
+  background-color: var(--background-info);
+}
+
+.infoColor {
+  color: var(--color-info);
+}
