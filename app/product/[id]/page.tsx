@@ -38,7 +38,7 @@ const ProductPage: React.FC = () => {
 
   // fetch product details API
   const { data, isLoading, error } = useQuery<ProductInterface>({
-    queryKey: ["productDetails"],
+    queryKey: ["productDetails", productId],
     queryFn: () => getProductDetails(productId),
     enabled: !isNaN(productId),
   });
@@ -90,7 +90,7 @@ const ProductPage: React.FC = () => {
     ...prevAlert,
     mode: "",
     message: "",
-  })), [])
+  })), []);
 
   // handle sidebar close event
   const closeSidebarHandler = () => dispatch(toggleSideBar(false));

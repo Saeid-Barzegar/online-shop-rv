@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import AppProvider from "@/app/providers/AppProvider";
-import Navigation from "@/app/components/Navigation/Navigation.component";
 
 export const metadata: Metadata = {
   title: "Product details",
@@ -14,9 +12,8 @@ export default function ProductDetails({
   children: React.ReactNode;
 }>) {
   return (
-    <AppProvider>
-      <Navigation />
+    <div>
       {children}
-    </AppProvider>
+    </div>
   );
 }
